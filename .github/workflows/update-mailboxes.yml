@@ -29,6 +29,9 @@ jobs:
       - name: Run the project
         run: cargo run --release
 
+      - name: Set RUST_BACKTRACE for debugging
+        run: echo "RUST_BACKTRACE=full" >> $GITHUB_ENV
+
       - name: Commit and push updates
         run: |
           git config user.name "GitHub Actions"
@@ -37,4 +40,4 @@ jobs:
           git commit -m "Update mailboxes list (automated)"
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
